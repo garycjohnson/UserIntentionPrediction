@@ -1,0 +1,131 @@
+
+
+
+LASH(1)                   USER COMMANDS                   LASH(1)
+
+
+NNAAMMEE
+       _l_a_s_h - Unix command shell with prediction of user's inten-
+       tion
+
+SSYYNNOOPPSSIISS
+       _l_a_s_h  [ _-_f _f_i_l_e_n_a_m_e  ]
+
+DDEESSCCRRIIPPTTIIOONN
+       This shell attempts to predict the command  and  arguments
+       which  are being typed by the user.  These predictions are
+       based on information taken from all commands typed by  the
+       user.   The extracted information consists of the commands
+       used, the arguments used with each command, the  directory
+       in  which a command is executed and the transition between
+       pairs of commands.  As well as automatic updating  of  the
+       data the user may make modifications to the data manually.
+
+       When typing at the command line, a prediction may be  dis-
+       played  in  place of the line typed so far.  At this point
+       the user has a number of options:  _a_c_c_e_p_t  the  prediction
+       and  _e_x_e_c_u_t_e  the  command line, _a_c_c_e_p_t the prediction and
+       _m_o_v_e onto the _n_e_x_t _a_r_g_u_m_e_n_t or _r_e_j_e_c_t  the  given  predic-
+       tion.
+
+       To  accept  and execute hit _<_R_E_T_U_R_N_> whilst the prediction
+       is displayed.  To accept and move onto the  next  argument
+       hit  _<_T_A_B_>  and  the  cursor will move to the start of the
+       next argument.  To reject  the  prediction  the  user  may
+       either  continue  typing  the next characters in the argu-
+       ment, or hit _<_B_A_C_K_S_P_A_C_E_> to remove the prediction from the
+       screen reverting back to the line as typed so far.
+
+       Once  a command has been executed _s_u_c_c_e_s_s_f_u_l_l_y the associ-
+       ated data is updated and the new command added  if  neces-
+       sary.   A  number  of  _b_u_i_l_t_-_i_n _c_o_m_m_a_n_d_s exist to view and
+       modify the data held.  All these built-ins have the common
+       prefix _!_@_.
+
+       !@he   Show available !@ commands
+
+       !@lc   List all command names held in store
+
+       !@ld   List all directories held in store
+
+       !@la <command>
+              List all arguments associated with _<_c_o_m_m_a_n_d_>_.
+
+       !@rc <command>
+              Remove given _<_c_o_m_m_a_n_d_>
+               from store
+
+       !@rd <directory>
+              Remove given _<_d_i_r_e_c_t_o_r_y_>
+               from store
+
+
+
+     Last change:         14 March 1994                         1
+
+
+
+
+
+LASH(1)                   USER COMMANDS                   LASH(1)
+
+
+       !@ra <command> <argument>
+              Remove _<_a_r_g_u_m_e_n_t_> _f_r_o_m _a_s_s_o_c_i_a_t_e_d _<_c_o_m_m_a_n_d_>_.
+
+       !@+c <command> !@-c <command>
+              Increase/decrease partial likelihood value of
+              _<_c_o_m_m_a_n_d_> by percentage from 1 to 100.
+
+       !@+a <command> <argument> !@-a <command> <argument>
+              Increase/decrease   partical  likelihood  value  of
+              _<_a_r_g_u_m_e_n_t_> associated with _<_c_o_m_m_a_n_d_> by  percentage
+              from 1 to 100.
+
+OOPPTTIIOONNSS
+       -f filename
+              This  option  allows  the selection of a file other
+              than the  default  _$_H_O_M_E_/_._l_a_s_h_d_a_t_a_.   If  the  file
+              specified  does  not  exist a new file will be cre-
+              ated.
+
+
+              Using this option the  user  may  have  data  files
+              which  are  tailored  for  particular  projects  or
+              applications.  Although any  use  may  be  made  of
+              these  files,  it is suggested that when working on
+              more than one  project  with  widely  variant  com-
+              mand/argument  sets  specific  files should be kept
+              for each project.  This will lead  to  an  improved
+              prediction quality.
+
+EEXXAAMMPPLLEESS
+       If the line typed so far is:
+
+              mail gj
+
+       the shell may show the full line as:
+
+              mail gjohnson
+
+       In which case I would type _<_R_E_T_U_R_N_> to send mail to
+       gjohnson,  _<_T_A_B_>  to  add  extra  arguments  to  the line,
+       _<_B_A_C_K_S_P_A_C_E_> to revert back to _m_a_i_l _g_j or  further  charac-
+       ters to append to _m_a_i_l _g_j_.
+
+FFIILLEESS
+       $HOME/.lashdata
+
+LLIIMMIITTAATTIIOONNSS
+       This is meant only as a prototype product and as such some
+       of the more advanced features commonly found in Unix  com-
+       mand  shells  may  not  be available in this product.  For
+       example, _p_i_p_e_s_, _b_a_c_k_g_r_o_u_n_d _p_r_o_c_e_s_s_e_s and  _r_e_d_i_r_e_c_t_i_o_n  are
+       not supported.
+
+
+
+
+
+     Last change:         14 March 1994                         2
+
